@@ -21,10 +21,6 @@ import com.xfhy.library.R
  * description：SnakeBar的简单封装,方便使用
  *
  *
- *
- *
- *
- *
  * 源码中:
  * Snackbar snackbar = new Snackbar(findSuitableParent(view));
  * Snackbar的第一个参数:view

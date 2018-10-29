@@ -7,7 +7,7 @@ import com.xfhy.library.common.BaseConstant
 
 /**
  * Created by xfhy on 2018/2/6 21:44
- * Description :
+ * Description : SharedPreferences工具类
  */
 object SPUtils {
 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -33,38 +34,78 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    //design
-    api rootProject.ext.design
-    //anko
-    api rootProject.ext.anko
-    //RxKotlin
-    api rootProject.ext.rxkotlin
-    api rootProject.ext.rxandroid
-    //gson
-    api rootProject.ext.gson
-    //Okhttp Retrofit
-    api rootProject.ext.okhttp
-    api rootProject.ext.retrofit
-    api rootProject.ext.okhttp_logging
-    api rootProject.ext.retrofit_converter_gson
-    api rootProject.ext.retrofit_adapter
-    //RxLifecycle
-    api rootProject.ext.rxlifecycle_kotlin
-    api rootProject.ext.rxlifecycle_components
-    //logger
-    api rootProject.ext.logger
-    //CardView
-    api rootProject.ext.cardview
-    //RecyclerView
-    api rootProject.ext.recyclerview
-    // 多dex配置
-    api rootProject.ext.multidex
 
-    api rootProject.ext.app_compat
-    api rootProject.ext.design
-    api rootProject.ext.constraint_layout
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "com.android.support:appcompat-v7:$versionsSupport"
+    //design
+    api "com.android.support:design:$versionsSupport"
+    api "com.android.support.constraint:constraint-layout:$versionConstraintLayout"
+
+    //anko
+    api "org.jetbrains.anko:anko:$anko_version"
+    //gson
+    api "com.google.code.gson:gson:$gson_version"
+
+    //OkHttp Retrofit
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    api "com.squareup.retrofit2:retrofit:$versionsRetrofit"
+    api "com.squareup.retrofit2:converter-gson:$versionsRetrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:$versionsRetrofit"
+
+    //RxLifecycle
+    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rx_lifecycle_version"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rx_lifecycle_version"
+
+    //log
+    api "com.orhanobut:logger:$logger_version"
+
+    //权限
+    api "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissions_version"
+
+    api "com.android.support:cardview-v7:$versionsSupport"
+    api "com.android.support:recyclerview-v7:$versionsSupport"
+
+    //多dex配置
+    api "com.android.support:multidex:$multidex_version"
+
+    //RxKotlin
+    api "io.reactivex.rxjava2:rxkotlin:$versionsRxKotlin"
+    api "io.reactivex.rxjava2:rxandroid:$versionsRxAndroid"
+
+    //ARouter  路由
+    api "com.alibaba:arouter-api:$arouter_api_version"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "com.airbnb.android:lottie:$lottieVersion"
+
+    //安卓官方 Room
+    api "android.arch.persistence.room:runtime:$room_version"
+    // use kapt for Kotlin
+    kapt "android.arch.persistence.room:compiler:$room_version"
+    // optional - RxJava support for Room
+    api "android.arch.persistence.room:rxjava2:$room_version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    api "android.arch.persistence.room:guava:$room_version"
+
+    //屏幕适配 https://github.com/JessYanCoding/AndroidAutoSize
+    api "me.jessyan:autosize:$autosize"
+
+    //-------------------------其他常用------------------------------
+    //matisse 知乎图片选择
+    //api 'com.zhihu.android:matisse:0.5.0-beta3'
+
+    //CircleImageView  圆形图片
+    //api 'de.hdodenhof:circleimageview:2.2.0'
+
+    //动画
+    //api "com.airbnb.android:lottie:$lottieVersion"
+
+    //GSYVideoPlayer  视频播放器
+    //api 'com.shuyu:GSYVideoPlayer:2.1.1'
+
+    //Bugly 热修复+更新+异常上报  推荐
+    //api 'com.tencent.bugly:crashreport_upgrade:1.3.5'
+
 }
 repositories {
     mavenCentral()

@@ -97,18 +97,6 @@ abstract class BaseFragment : RxFragment() {
     protected open fun stopLoad() {}
 
     /**
-     * 发送需要变换标题的广播   这样注册了该action的地方都会收到(前提:此应用&&未取消注册)
-     */
-    fun sendTitleChangeBroadcast(title: String) {
-        val intent = Intent()
-        intent.action = BroadcastConstant.MAIN_BROADCAST
-        intent.putExtra(BroadcastConstant.TITLE_CHANGE_TITLE, title)
-        context?.let {
-            LocalBroadcastManager.getInstance(it).sendBroadcast(intent)
-        }
-    }
-
-    /**
      * 模拟物理按键返回
      */
     open fun onBackPress(): Boolean {

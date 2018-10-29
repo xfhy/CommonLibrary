@@ -36,6 +36,9 @@ import java.lang.annotation.RetentionPolicy
  * author xfhy
  * create at 2017/10/16 15:45
  * description：简单的封装BaseAdapter
+ *
+ * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+ * 这个adapter属于BaseRecyclerViewAdapterHelper的早期(2017)版本
  */
 abstract class BaseQuickAdapter<T, K : BaseViewHolder>
 @JvmOverloads constructor(@LayoutRes layoutResId: Int, data: MutableList<T>? = null) : RecyclerView.Adapter<K>() {

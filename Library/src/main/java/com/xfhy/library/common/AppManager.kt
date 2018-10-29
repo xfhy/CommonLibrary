@@ -10,7 +10,7 @@ import java.util.*
  */
 class AppManager private constructor() {
 
-    val activityStack = Stack<Activity>()
+    private val activityStack = Stack<Activity>()
 
     companion object {
         val instance: AppManager by lazy { AppManager() }

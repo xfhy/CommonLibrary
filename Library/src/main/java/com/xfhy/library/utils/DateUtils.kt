@@ -21,9 +21,6 @@ object DateUtils {
      * @return 返回格式化之后的字符串
      */
     fun getDateFormatText(date: Date, format: String): String {
-        if (date == null || format == null) {
-            return ""
-        }
         val simpleDateFormat = SimpleDateFormat(format, Locale.CHINA)
         return simpleDateFormat.format(date)
     }
@@ -36,9 +33,6 @@ object DateUtils {
      * @return 返回格式化之后的字符串
      */
     fun getDateFormatText(time: Long, format: String): String {
-        if (time == null || format == null) {
-            return ""
-        }
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = time
         val simpleDateFormat = SimpleDateFormat(format, Locale.CHINA)
@@ -53,9 +47,6 @@ object DateUtils {
      * @return 返回减去天数之后的日期对应的Date
      */
     fun getPastDate(date: Date, pastDays: Int): Date {
-        if (date == null) {
-            return Date()
-        }
         val calendar = Calendar.getInstance()
         calendar.time = date
         calendar.add(Calendar.DATE, -pastDays)

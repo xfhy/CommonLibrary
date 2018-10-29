@@ -3,6 +3,11 @@ package com.xfhy.library.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.os.Build
+import android.support.v4.content.ContextCompat.getSystemService
+
 
 /**
  * Created by xfhy on 2018/2/4 17:03
@@ -24,8 +29,20 @@ object NetWorkUtils {
      */
     @SuppressLint("MissingPermission")
     fun isWifiConnected(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = cm.activeNetworkInfo
-        return networkInfo != null && networkInfo.type == ConnectivityManager.TYPE_WIFI
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            val connectivityManager = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = connectivityManager.allNetworks
+            for (a in networkInfo.indices) {
+                val networkCapabilities = connectivityManager.getNetworkCapabilities(networkInfo[a])
+                if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    return true
+                }
+            }
+            return false
+        } else {
+            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = cm.activeNetworkInfo
+            return networkInfo != null && networkInfo.type == ConnectivityManager.TYPE_WIFI
+        }
     }
 }

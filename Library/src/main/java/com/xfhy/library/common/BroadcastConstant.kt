@@ -6,8 +6,6 @@ package com.xfhy.library.common
  */
 object BroadcastConstant {
 
-    const val MAIN_BROADCAST = "com.xfhy.life.main.localbroadcast"
-    const val TITLE_CHANGE_TITLE = "title"
     const val TITLE_HIDE_TITLE = "hide_title_bar"
     const val OPEN_DRAWER = "open_drawer"
     const val SWITCH_DRAWER = "switch_drawer"
