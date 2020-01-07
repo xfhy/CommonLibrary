@@ -54,8 +54,8 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava2:$versionsRetrofit"
 
     //RxLifecycle
-    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rx_lifecycle_version"
-    api "com.trello.rxlifecycle2:rxlifecycle-components:$rx_lifecycle_version"
+    //api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rx_lifecycle_version"
+    //api "com.trello.rxlifecycle2:rxlifecycle-components:$rx_lifecycle_version"
 
     //log
     api "com.orhanobut:logger:$logger_version"

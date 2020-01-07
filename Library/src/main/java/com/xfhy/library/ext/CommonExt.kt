@@ -5,6 +5,8 @@ import com.google.android.material.snackbar.Snackbar
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.xfhy.library.utils.SnackbarUtil
 import com.xfhy.library.widgets.DefaultTextWatcher
 
@@ -27,7 +29,15 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
 }
 
 //Activity中展示snackbar
-fun Activity.snackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT, type: Int = SnackbarUtil.INFO) {
+fun Activity.snackbar(
+    view: View,
+    message: String,
+    duration: Int = Snackbar.LENGTH_SHORT,
+    type: Int = SnackbarUtil.INFO
+) {
     SnackbarUtil.showCustomTimeSnackbar(view, message, Snackbar.LENGTH_SHORT, SnackbarUtil.INFO)
 }
 
+fun Fragment.toast(str: String) {
+    Toast.makeText(context, str, Toast.LENGTH_SHORT).show()
+}

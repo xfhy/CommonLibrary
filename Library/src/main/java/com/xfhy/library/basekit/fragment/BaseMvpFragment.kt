@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import com.xfhy.library.basekit.presenter.IPresenter
 import com.xfhy.library.basekit.view.IBaseView
+import com.xfhy.library.ext.toast
 import com.xfhy.library.widgets.LoadingDialog
-import org.jetbrains.anko.support.v4.toast
 
 /**
  * @author xfhy
