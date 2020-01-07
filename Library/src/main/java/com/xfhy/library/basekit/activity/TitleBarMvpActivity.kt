@@ -3,6 +3,7 @@ package com.xfhy.library.basekit.activity
 import android.view.View
 import android.widget.LinearLayout
 import com.xfhy.library.basekit.presenter.IPresenter
+import com.xfhy.library.basekit.view.IBaseView
 import com.xfhy.library.widgets.TitleBar
 import kotlinx.android.synthetic.main.layout_header_bar.view.*
 import org.jetbrains.anko.dip
@@ -11,7 +12,7 @@ import org.jetbrains.anko.dip
  * Created by xfhy on 2018/2/3 19:25
  * Description : 带标题栏的Activity MVP
  */
-abstract class TitleBarMvpActivity<T : IPresenter> : BaseMvpActivity<T>(), TitleBar.TitleBarListener {
+abstract class TitleBarMvpActivity<T : IPresenter<in IBaseView>> : BaseMvpActivity<T>(), TitleBar.TitleBarListener {
 
     private lateinit var mTitleBar: TitleBar
 

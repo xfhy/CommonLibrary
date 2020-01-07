@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.xfhy.library.R
 
-import com.xfhy.library.basekit.presenter.RxPresenter
+import com.xfhy.library.basekit.presenter.BasePresenter
 import com.xfhy.library.basekit.view.IBaseView
 import com.xfhy.library.utils.DevicesUtils
 import com.xfhy.library.utils.SnackbarUtil
@@ -17,30 +17,29 @@ import com.xfhy.library.widgets.StatefulLayout
  * description：所有需要刷新和请求网络的fragment可以继承自该fragment,已实现基本的展示空布局,刷新布局,显示错误信息等
  * MVP架构,布局中必须是有StatefulLayout,并且子类必须去fbc该id
  */
-abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), IBaseView {
+abstract class BaseStateMVPFragment<P : BasePresenter<in IBaseView>> : BaseFragment(), IBaseView {
 
     protected var mPresenter: P? = null
+    private var mFlagDestroy = false
 
     var mStateView: StatefulLayout? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         initPresenter()
+        mPresenter?.setView(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mPresenter?.onCreate()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mPresenter?.onResume()
+        mFlagDestroy = false
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.onDestroy()
+        mFlagDestroy = true
+        mPresenter = null
     }
 
     /**
@@ -67,10 +66,13 @@ abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), IBaseView
 
     override fun showOffline() {
         closeRefresh()
-        mStateView?.showOffline(R.string.stfLayoutOfflineMessage, R.string.stfLayoutButtonSetting, View.OnClickListener {
-            //未联网  跳转到设置界面
-            DevicesUtils.goSetting(activity)
-        })
+        mStateView?.showOffline(
+            R.string.stfLayoutOfflineMessage,
+            R.string.stfLayoutButtonSetting,
+            View.OnClickListener {
+                //未联网  跳转到设置界面
+                DevicesUtils.goSetting(activity)
+            })
     }
 
 
@@ -91,4 +93,5 @@ abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), IBaseView
         return false
     }
 
+    override fun isViewDestroy(): Boolean = mFlagDestroy
 }

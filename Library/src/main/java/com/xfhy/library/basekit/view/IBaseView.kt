@@ -38,4 +38,9 @@ interface IBaseView {
      */
     fun showContent()
 
+    /**
+     * View是否已经被destroy
+     */
+    fun isViewDestroy(): Boolean
+
 }

@@ -12,8 +12,9 @@ import com.xfhy.library.widgets.LoadingDialog
  * time create at 2018/1/27 9:09
  * description 需要使用MVP的fragment的基类
  */
-abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
+abstract class BaseMvpFragment<T : IPresenter<in IBaseView>> : BaseFragment(), IBaseView {
     protected var mPresenter: T? = null
+    private var mFlagDestroy = false
     private val mDialog by lazy {
         activity?.let { LoadingDialog.create(it) }
     }
@@ -26,7 +27,9 @@ abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mPresenter?.onCreate()
+        mFlagDestroy = false
+        initPresenter()
+        mPresenter?.setView(this)
     }
 
     override fun showLoading() {
@@ -34,7 +37,7 @@ abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
     }
 
     override fun hideLoading() {
-        if(mDialog?.isShowing != false){
+        if (mDialog?.isShowing != false) {
             mDialog?.hide()
         }
     }
@@ -43,14 +46,10 @@ abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
         toast(errorMsg)
     }
 
-    override fun onResume() {
-        super.onResume()
-        mPresenter?.onResume()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.onDestroy()
+        mPresenter = null
+        mFlagDestroy = true
     }
 
     override fun showContent() {
@@ -61,6 +60,8 @@ abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
 
     override fun showOffline() {
     }
+
+    override fun isViewDestroy(): Boolean = mFlagDestroy
 
     /**
      * 初始化presenter

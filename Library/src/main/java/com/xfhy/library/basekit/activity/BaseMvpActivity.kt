@@ -11,15 +11,17 @@ import org.jetbrains.anko.toast
  * time create at 2018/1/27 9:09
  * description MVP Activity基类
  */
-abstract class BaseMvpActivity<P : IPresenter> : BaseActivity(), IBaseView {
+abstract class BaseMvpActivity<P : IPresenter<in IBaseView>> : BaseActivity(), IBaseView {
     protected var mPresenter: P? = null
+    private var mFlagDestroy = false
     private val mDialog by lazy { LoadingDialog.create(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        mFlagDestroy = false
         initPresenter()
-        mPresenter?.onCreate()
+        mPresenter?.setView(this)
     }
 
     abstract fun initPresenter()
@@ -51,15 +53,12 @@ abstract class BaseMvpActivity<P : IPresenter> : BaseActivity(), IBaseView {
         toast(errorMsg)
     }
 
-    override fun onResume() {
-        super.onResume()
-        mPresenter?.onResume()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
+        mFlagDestroy = true
         hideLoading()
-        mPresenter?.onDestroy()
     }
+
+    override fun isViewDestroy(): Boolean = mFlagDestroy
 
 }
