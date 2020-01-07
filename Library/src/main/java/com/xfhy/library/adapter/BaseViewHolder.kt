@@ -2,12 +2,12 @@ package com.xfhy.library.adapter
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorLong
-import android.support.annotation.DrawableRes
-import android.support.annotation.FloatRange
-import android.support.annotation.IdRes
-import android.support.annotation.StringRes
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.ColorLong
+import androidx.annotation.DrawableRes
+import androidx.annotation.FloatRange
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import androidx.recyclerview.widget.RecyclerView
 import android.text.SpannableStringBuilder
 import android.util.SparseArray
 import android.view.View

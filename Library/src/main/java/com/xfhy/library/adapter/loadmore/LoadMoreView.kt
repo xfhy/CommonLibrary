@@ -1,7 +1,7 @@
 package com.xfhy.library.adapter.loadmore
 
-import android.support.annotation.IdRes
-import android.support.annotation.LayoutRes
+import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
 import com.xfhy.library.adapter.BaseViewHolder
 
 abstract class LoadMoreView {

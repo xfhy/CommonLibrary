@@ -1,6 +1,6 @@
 package com.xfhy.library.adapter
 
-import android.support.annotation.LayoutRes
+import androidx.annotation.LayoutRes
 import android.util.SparseIntArray
 import android.view.ViewGroup
 

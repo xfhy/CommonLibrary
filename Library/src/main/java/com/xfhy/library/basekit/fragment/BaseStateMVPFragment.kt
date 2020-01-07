@@ -1,6 +1,6 @@
 package com.xfhy.library.basekit.fragment
 
-import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import com.xfhy.library.R
@@ -23,8 +23,8 @@ abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), IBaseView
 
     var mStateView: StatefulLayout? = null
 
-    override fun onAttach(activity: Activity?) {
-        super.onAttach(activity)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         initPresenter()
     }
 

@@ -1,6 +1,6 @@
 package com.xfhy.library.widgets
 
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.view.View
 
 import java.io.Serializable

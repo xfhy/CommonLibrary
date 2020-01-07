@@ -1,8 +1,8 @@
 package com.xfhy.library.widgets
 
 import android.content.Context
-import android.support.annotation.AnimRes
-import android.support.annotation.StringRes
+import androidx.annotation.AnimRes
+import androidx.annotation.StringRes
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater

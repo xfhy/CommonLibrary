@@ -1,13 +1,10 @@
 package com.xfhy.library.basekit.fragment
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.trello.rxlifecycle2.components.support.RxFragment
-import com.xfhy.library.common.BroadcastConstant
+import androidx.fragment.app.Fragment
 
 
 /**
@@ -15,7 +12,7 @@ import com.xfhy.library.common.BroadcastConstant
  * time create at 2018/1/27 9:09
  * description Fragment基类
  */
-abstract class BaseFragment : RxFragment() {
+abstract class BaseFragment : Fragment() {
     /**
      * 该fragment所对应的布局
      */
