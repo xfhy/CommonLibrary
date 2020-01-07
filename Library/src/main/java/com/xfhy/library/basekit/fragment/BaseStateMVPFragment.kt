@@ -1,16 +1,12 @@
 package com.xfhy.library.basekit.fragment
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.LocalBroadcastManager
 import android.view.View
 import com.xfhy.library.R
 
-import com.xfhy.library.basekit.presenter.BasePresenter
 import com.xfhy.library.basekit.presenter.RxPresenter
-import com.xfhy.library.basekit.view.BaseView
-import com.xfhy.library.common.BroadcastConstant
+import com.xfhy.library.basekit.view.IBaseView
 import com.xfhy.library.utils.DevicesUtils
 import com.xfhy.library.utils.SnackbarUtil
 import com.xfhy.library.widgets.StatefulLayout
@@ -21,7 +17,7 @@ import com.xfhy.library.widgets.StatefulLayout
  * description：所有需要刷新和请求网络的fragment可以继承自该fragment,已实现基本的展示空布局,刷新布局,显示错误信息等
  * MVP架构,布局中必须是有StatefulLayout,并且子类必须去fbc该id
  */
-abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), BaseView {
+abstract class BaseStateMVPFragment<P : RxPresenter> : BaseFragment(), IBaseView {
 
     protected var mPresenter: P? = null
 

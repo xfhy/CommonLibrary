@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable
  * create at 2017/12/17 9:23
  * description：基于RxJava2的Presenter封装,控制订阅的生命周期
  */
-open class RxPresenter : BasePresenter {
+open class RxPresenter : IPresenter {
 
     /*
     * 如果有多个Disposable , RxJava中已经内置了一个容器CompositeDisposable,

@@ -1,7 +1,7 @@
 package com.xfhy.library.rx
 
 import com.google.gson.JsonSyntaxException
-import com.xfhy.library.basekit.view.BaseView
+import com.xfhy.library.basekit.view.IBaseView
 import io.reactivex.subscribers.ResourceSubscriber
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -11,7 +11,7 @@ import java.net.SocketTimeoutException
  * time create at 2018/1/27 20:00
  * description 公用的订阅者
  */
-open class CommonSubscriber<T>(var view: BaseView?, private val mErrorMsg: String = "") :
+open class CommonSubscriber<T>(var view: IBaseView?, private val mErrorMsg: String = "") :
         ResourceSubscriber<T>() {
 
     override fun onNext(t: T?) {

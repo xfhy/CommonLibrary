@@ -1,25 +1,25 @@
 package com.xfhy.library.basekit.presenter
 
+import com.trello.rxlifecycle2.LifecycleProvider
+
 /**
- * author xfhy
- * create at 2017/9/15 13:44
- * description：MVP Presenter的父接口
+ * @author xfhy
+ * time create at 2018/1/27 9:07
+ * description
  */
-interface BasePresenter {
+open class BasePresenter : IPresenter{
 
     /**
-     * 模拟界面的生命周期 onCreate()
+     * 用于传入RxKotlin 避免内存泄露
      */
-    fun onCreate()
+    lateinit var lifeProvider: LifecycleProvider<*>
 
-    /**
-     * 模拟界面的生命周期 onResume()
-     */
-    fun onResume()
+    override fun onCreate() {
+    }
 
-    /**
-     * 模拟界面的生命周期 onDestroy()
-     */
-    fun onDestroy()
+    override fun onResume() {
+    }
 
+    override fun onDestroy() {
+    }
 }

@@ -1,8 +1,8 @@
 package com.xfhy.library.basekit.activity
 
 import android.os.Bundle
-import com.xfhy.library.basekit.presenter.BasePresenter
-import com.xfhy.library.basekit.view.BaseView
+import com.xfhy.library.basekit.presenter.IPresenter
+import com.xfhy.library.basekit.view.IBaseView
 import com.xfhy.library.widgets.LoadingDialog
 import org.jetbrains.anko.toast
 
@@ -11,7 +11,7 @@ import org.jetbrains.anko.toast
  * time create at 2018/1/27 9:09
  * description MVP Activity基类
  */
-abstract class BaseMvpActivity<P : BasePresenter> : BaseActivity(), BaseView {
+abstract class BaseMvpActivity<P : IPresenter> : BaseActivity(), IBaseView {
     protected var mPresenter: P? = null
     private val mDialog by lazy { LoadingDialog.create(this) }
 

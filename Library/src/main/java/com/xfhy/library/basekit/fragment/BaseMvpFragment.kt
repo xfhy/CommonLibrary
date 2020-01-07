@@ -2,9 +2,8 @@ package com.xfhy.library.basekit.fragment
 
 import android.content.Context
 import android.os.Bundle
-import com.xfhy.library.basekit.presenter.BasePresenter
-import com.xfhy.library.basekit.presenter.RxPresenter
-import com.xfhy.library.basekit.view.BaseView
+import com.xfhy.library.basekit.presenter.IPresenter
+import com.xfhy.library.basekit.view.IBaseView
 import com.xfhy.library.widgets.LoadingDialog
 import org.jetbrains.anko.support.v4.toast
 
@@ -13,7 +12,7 @@ import org.jetbrains.anko.support.v4.toast
  * time create at 2018/1/27 9:09
  * description 需要使用MVP的fragment的基类
  */
-abstract class BaseMvpFragment<T : BasePresenter> : BaseFragment(), BaseView {
+abstract class BaseMvpFragment<T : IPresenter> : BaseFragment(), IBaseView {
     protected var mPresenter: T? = null
     private val mDialog by lazy {
         activity?.let { LoadingDialog.create(it) }
